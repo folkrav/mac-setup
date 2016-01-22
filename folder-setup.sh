@@ -6,7 +6,7 @@
 #
 
 # Move directories
-printf 'Moving directories'
+printf 'Moving directories\n'
 sudo mv $HOME/Documents/ /Volumes/Files/
 sudo mv $HOME/Downloads/ /Volumes/Files/
 sudo mv $HOME/Movies/ /Volumes/Files/
@@ -14,14 +14,14 @@ sudo mv $HOME/Music/ /Volumes/Files/
 sudo mv $HOME/Pictures/ /Volumes/Files/
 
 # Create additional folders
-printf 'Creating more directories'
+printf 'Creating more directories\n'
 mkdir /Volumes/Files/bin/
 mkdir /Volumes/Files/Development/
 mkdir /Volumes/Files/Google\ Drive/
 mkdir /Volumes/Files/Torrent/
 
 # Create symlinks
-printf 'Symlinking folders'
+printf 'Symlinking folders\n'
 ln -s /Volumes/Files/Development $HOME
 ln -s /Volumes/Files/Documents $HOME
 ln -s /Volumes/Files/Downloads $HOME
