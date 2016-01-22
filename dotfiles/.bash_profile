@@ -1,12 +1,11 @@
 if [[ $- == *i* ]]
 then
-	
+
     ## Homebrew Cask settings
     export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-    export PATH="/usr/local/bin:$PATH"
 
-    ## Custom user scripts
-    export PATH=$PATH:$HOME/bin
+    ## Path
+    export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin"
 
     ## Bash prompt variables
     export PS1="\n\[\033[38;5;11m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\h \[$(tput sgr0)\]\[\033[38;5;6m\][\w]\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]--> "
@@ -26,8 +25,8 @@ then
     alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
     alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 
-    if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    if [ -f $(brew --prefix)/etc/bash_completion ]
+    then
         . $(brew --prefix)/etc/bash_completion
     fi
 fi
-
