@@ -8,6 +8,7 @@ PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin"
 autoload -U colors && colors
 NEWLINE=$'\n'
 PROMPT="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg_no_bold[cyan]%}%1\[%~] %{$reset_color%}${NEWLINE}→ "
+source ~/bin/git_status.zsh
 
 ## Aliases
 # defaults
