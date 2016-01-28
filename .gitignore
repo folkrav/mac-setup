@@ -1,5 +1,5 @@
 ## MAC OS X
-# OS/Finder files
+# OS/Finder specific
 .DS_Store
 Desktop.ini
 .Spotlight-V100
@@ -11,17 +11,13 @@ Thumbs.db
 
 
 ## SUBLIME TEXT
-# cache files
+# cache
 *.tmlanguage.cache
 *.tmPreferences.cache
 *.stTheme.cache
 
-# workspace files are user-specific
+# workspace
 *.sublime-workspace
 
-# project files should be checked into the repository, unless a significant
-# proportion of contributors will probably not be using SublimeText
-# *.sublime-project
-
-# sftp configuration file
+# sftp configuration
 sftp-config.json

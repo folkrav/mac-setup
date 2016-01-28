@@ -1,0 +1,3 @@
+[submodule "configs/SublimeConf"]
+	path = configs/SublimeConf
+	url = https://github.com/folkrav/SublimeConf.git

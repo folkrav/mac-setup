@@ -33,7 +33,6 @@ source $HOME/bin/git_status.zsh
 
 ## Aliases
 # defaults
-alias ls='ls --color=auto'
 alias mkdir='mkdir -pv'
 alias wget='wget -c'
 alias ping='ping -c 5'
