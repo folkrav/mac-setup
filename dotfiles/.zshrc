@@ -1,14 +1,35 @@
 ## Homebrew Cask settings
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
-## Path
-PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin"
+#
+#  File : .zshrc
+#  Author : Jean-Sebastien Beaulieu
+#  Date : 2016/01/25
+#  Description : N/A 
+#
 
-## PROMPT settings
+## Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=10000
+SAVEHIST=30000
+setopt autocd beep nomatch notify
+unsetopt appendhistory extendedglob
+bindkey -v
+
+## Lines added by compinstall
+zstyle :compinstall filename '/home/jsbeaulieu/.zshrc'
+
+autoload -Uz compinit
+compinit
+
+## Path
+export PATH="$PATH:$HOME/bin"
+
+## Prettify things
 autoload -U colors && colors
 NEWLINE=$'\n'
-PROMPT="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg_no_bold[cyan]%}%1\[%~] %{$reset_color%}${NEWLINE}→ "
-source ~/bin/git_status.zsh
+PROMPT="${NEWLINE}%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg_no_bold[cyan]%}%1\[%~] %{$reset_color%}${NEWLINE}›"
+source $HOME/bin/git_status.zsh
 
 ## Aliases
 # defaults
