@@ -18,6 +18,8 @@ Thumbs.db
 
 # workspace
 *.sublime-workspace
+# project - usually want to keep it
+#*.sublime-project
 
 # sftp configuration
 sftp-config.json

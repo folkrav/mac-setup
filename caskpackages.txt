@@ -1,0 +1,13 @@
+android-file-transfer
+android-studio
+dropbox
+eclipse-java
+flash
+font-hack
+google-chrome
+java
+keepingyouawake
+radiant-player
+sublime-text3
+transmission
+vlc

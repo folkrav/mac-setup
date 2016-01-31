@@ -6,30 +6,73 @@
 #   package managers.
 #
 
-# We need to move to the script's directory, because
-# some things depend on it, like symlinking. We save the
-# current directory first, so we can move back to it when
-# we are done.
-currentdir=$(pwd)
-cd ${0%/*}
+# Dotfiles under mac-setup/dotfiles/ to be restored
+DOTFILES=".zshrc"
+
+#------------------------------------
+# Utility functions
+#------------------------------------
+
+# Shows a yes/no choice, usage :
+# >  confirm && command_to_execute
+confirm() {
+    read -r -p "${1:-Make a choice [y/N]} : " response
+    case $response in [yY][eE][sS]|[yY])
+            true
+            ;;
+        *)
+            false
+            ;;
+    esac
+}
+
+
+#------------------------------------
+# Execution
+#------------------------------------
+scriptdir=${0%/*}
 
 # ---- RESTORING DOTFILES
-printf 'Restoring dotfiles...\n'; sleep 1
-source ./dotfiles.sh; sleep 1
+symdot() {
+    mkdir -p $scriptdir/dotfiles/backup
+    for f in $DOTFILES ; do
+        if [ -L $HOME/$f ] ; then
+            rm $HOME/$f
+            printf "Previous symlink to $f found and removed.\n"
+        fi
+        if [ -f $HOME/$f ] ; then
+            mv $HOME/$f $scriptdir/dotfiles/backup
+            printf "Previous $f found and backed up.\n"
+        fi
+        ln -s $scriptdir/dotfiles/$f $HOME
+        printf "$f symlinked in $HOME.\n"
+    done
+    source ~/.zshrc
+}
+printf 'Restore dotfiles?\n'
+confirm && symdot
 
 # ---- FOLDERS AND SYMLINKS
-printf 'Creating folders and symlinks requires a volume named "Files" under /Volumes.\n'
-read -p "Create folders and symlinks? (Y/N) : " -n 1 -r
-echo  # empty line
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-    source ./folders.sh; sleep 1
-fi
+printf 'Symlink stuff? Creating folders and symlinks\nrequires a volume named "Files" under /Volumes.\n'
+confirm && source $scriptdir/folders.sh
 
 # Setup the desktop environment
-printf 'Setting up the desktop environment...\n'; sleep 1
-source ./environment.sh; sleep 1
-printf 'All done!\n'
+printf 'Do you want to install applications?\n'
+printf 'Installing Homebrew and Cask...\n'
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew update
+brew doctor
+brew tap caskroom/cask
+brew tap caskroom/versions
+brew tap caskroom/fonts
+
+printf 'Installing applications...\n'
+while read b; do # Brew packages
+    brew install $b
+done <brewpackages.txt
+while read bc; do # Brew Cask packages
+    brew cask install $bc
+done <caskpackages.txt
 
 # Moving back to our original directory
-cd $currentdir
+printf 'All done!\n'
