@@ -25,26 +25,11 @@ compinit
 ## Path
 export PATH="/usr/local/bin:$PATH:$HOME/bin"
 
-## Android development
-# Environment variables
-export ANT_HOME=/usr/local/opt/ant
-export MAVEN_HOME=/usr/local/opt/maven
-export GRADLE_HOME=/usr/local/opt/gradle
-export ANDROID_HOME=/usr/local/opt/android-sdk
-export ANDROID_NDK_HOME=/usr/local/opt/android-ndk
-
-# Paths
-export PATH=$ANT_HOME/bin:$PATH
-export PATH=$MAVEN_HOME/bin:$PATH
-export PATH=$GRADLE_HOME/bin:$PATH
-export PATH=$ANDROID_HOME/tools:$PATH
-export PATH=$ANDROID_HOME/platform-tools:$PATH
-export PATH=$ANDROID_HOME/build-tools/$(ls $ANDROID_HOME/build-tools | sort | tail -1):$PATH
-
 ## Prettify things
 autoload -U colors && colors
 NEWLINE=$'\n'
-PROMPT="${NEWLINE}%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg_no_bold[cyan]%}%1\[%~] %{$reset_color%}${NEWLINE}›"
+PROMPT="%{$fg_no_bold[cyan]%}%1\[%~] %{$reset_color%}"
+export SPROMPT="Correct $fg[yellow]%R$reset_color to $fg[green]%r?$reset_color (Yes, No, Abort, Edit) "
 source $HOME/bin/git_status.zsh
 
 ## Aliases

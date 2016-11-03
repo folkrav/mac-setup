@@ -30,27 +30,27 @@ confirm() {
 #------------------------------------
 # Execution
 #------------------------------------
-scriptdir=${0%/*}
-
-# ---- RESTORING DOTFILES
-symdot() {
-    mkdir -p $scriptdir/dotfiles/backup
-    for f in $DOTFILES ; do
-        if [ -L $HOME/$f ] ; then
-            rm $HOME/$f
-            printf "Previous symlink to $f found and removed.\n"
-        fi
-        if [ -f $HOME/$f ] ; then
-            mv $HOME/$f $scriptdir/dotfiles/backup
-            printf "Previous $f found and backed up.\n"
-        fi
-        ln -s $scriptdir/dotfiles/$f $HOME
-        printf "$f symlinked in $HOME.\n"
-    done
-    source ~/.zshrc
-}
-printf 'Restore dotfiles?\n'
-confirm && symdot
+#scriptdir=${0%/*}
+#
+## ---- RESTORING DOTFILES
+#symdot() {
+#    mkdir -p $scriptdir/dotfiles/backup
+#    for f in $DOTFILES ; do
+#        if [ -L $HOME/$f ] ; then
+#            rm $HOME/$f
+#            printf "Previous symlink to $f found and removed.\n"
+#        fi
+#        if [ -f $HOME/$f ] ; then
+#            mv $HOME/$f $scriptdir/dotfiles/backup
+#            printf "Previous $f found and backed up.\n"
+#        fi
+#        ln -s $scriptdir/dotfiles/$f $HOME
+#        printf "$f symlinked in $HOME.\n"
+#    done
+#    source ~/.zshrc
+#}
+#printf 'Restore dotfiles?\n'
+#confirm && symdot
 
 # ---- FOLDERS AND SYMLINKS
 printf 'Symlink stuff? Creating folders and symlinks\nrequires a volume named "Files" under /Volumes.\n'

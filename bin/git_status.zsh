@@ -67,4 +67,4 @@ git_prompt_string() {
 }
 
 # Set the right-hand prompt
-RPS1='$(git_prompt_string)'
+PROMPT=$PROMPT'$(git_prompt_string) $ '
