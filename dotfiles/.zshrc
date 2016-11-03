@@ -23,7 +23,10 @@ autoload -Uz compinit
 compinit
 
 ## Path
-export PATH="/usr/local/bin:$PATH:$HOME/bin"
+export PATH="/usr/local/bin:/usr/local/mysql/bin:$PATH:$HOME/bin"
+export WORKON_HOME=~/.virtualenvs
+VIRTUALENVWRAPPER_PYTHON='/usr/local/bin/python3' # This needs to be placed before the virtualenvwrapper command
+source /usr/local/bin/virtualenvwrapper.sh
 
 ## Prettify things
 autoload -U colors && colors
